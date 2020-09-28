@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title th:text="${title}"></title>
+<style>
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; 
+}
+
+.td1 {
+	width:30%;
+    padding: 10px 10px 10px 5px;
+}
+
+.td2 {
+	width:70%;
+    padding: 0px 0px 10px 20px;
+}
+</style>
+
+</head>
+<body>
+
+	<div class="navbar">
+		<a th:href="@{/}">Logout</a>
+		<a th:href="@{/slot/available}">Available Slots</a>
+		<a th:href="@{/calendar}">Agenda</a>
+	  	<a th:href="@{#}" style="float: left;background: #ddd;color: black;font-weight:bold;">Spring Boot Application</a>
+	</div>
+	
+	<div style="width: 50%;margin: 0 auto;margin-top:120px;padding:20px;border: 1px solid gray;">
+		<h2 style="text-align:center;padding-bottom:20px;" th:text="${title}"></h2>
+		
+		<table>
+			<tbody>
+			
+				<tr th:each="calendarObj: ${calendarObjs}">
+	                <td th:text="${calendarObj.startEnd}" class="td1"></td>
+	                <td th:text=${calendarObj.title} class="td2"></td>
+	            </tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
